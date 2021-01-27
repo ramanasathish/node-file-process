@@ -12,7 +12,7 @@ app.init = () => {
 }
 app.conn = () => {
     if (!db) {
-        init();
+        app.init();
     }
 
     return db;

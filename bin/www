@@ -3,6 +3,6 @@ const http = require('http');
 const server = http.createServer(app);
 const db = require('../database');
 
-db.init();
+// db.init();
 
 server.listen(8080);
