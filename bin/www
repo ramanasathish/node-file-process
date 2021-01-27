@@ -1,5 +1,8 @@
 const app = require('../app');
 const http = require('http');
 const server = http.createServer(app);
+const db = require('../database');
+
+db.init();
 
 server.listen(8080);
