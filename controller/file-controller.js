@@ -27,7 +27,7 @@ app.fetchFromFile = (_, res) => {
             });
         }).on('end', async () => {
             await fileModel.bulkInsert(insertList);
-            res.send(errProducts)
+            res.send({ok:products,notOk:errProducts});
         });
 }
 
