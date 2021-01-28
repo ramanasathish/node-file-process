@@ -5,6 +5,7 @@ const fileModel = require('../model/file-model');
 const app = {};
 
 const schema = Joi.object({
+    id: Joi.any().required(),
     name: Joi.string().required(),
     quantity: Joi.number().required(),
     price: Joi.number().required(),
@@ -26,8 +27,8 @@ app.fetchFromFile = (_, res) => {
                 errProducts.push({...product,error:details});
             });
         }).on('end', async () => {
-            await fileModel.bulkInsert(insertList);
-            res.send({ok:products,notOk:errProducts});
+            const response = await fileModel.bulkInsert(insertList);
+            res.send({...response,ok:products,notOk:errProducts});
         });
 }
 
